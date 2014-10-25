@@ -31,9 +31,10 @@ principal_amount = 200000.0
 #     Line 1 of this file.
 
 # ==============================================================
-# Your code goes here.
-# You shouldn't have to write code or change code anywhere else.
+loan_quotes.each do |loan_quote|
+  bank = loan_quote["bank"]
+  monthly_payment = pmt(loan_quote["annual_rate"], number_of_monthly_payments, principal_amount).round(2)
 
-# loan_quotes.each ...
-
+  puts "The monthly payment for #{bank} will be $#{monthly_payment}"
+end
 # ==============================================================

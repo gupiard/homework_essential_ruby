@@ -43,11 +43,10 @@ end
 #  - then we divide the sum by the number of elements in the set
 
 def mean(list_of_numbers)
-  # Let's re-use the work we did above in the sum method
+  sum_of_numbers = sum(list_of_numbers)
+  mean_of_numbers = sum_of_numbers / list_of_numbers.count.to_f
 
-  # ====================
-  # Your code goes here.
-  # ====================
+  return mean_of_numbers
 end
 
 # VARIANCE
@@ -60,11 +59,15 @@ end
 #  - the variance is the mean of the squared differences
 
 def variance(list_of_numbers)
-  # Let's re-use the work we did above in the mean method
+  mean_of_numbers = mean(list_of_numbers)
+  square_diffs = []
+  list_of_numbers.each do |number|
+    diff_from_mean   = number - mean_of_numbers
+    square_diffs.push(diff_from_mean ** 2)
+  end
+  population_variance = mean(square_diffs)
 
-  # ====================
-  # Your code goes here.
-  # ====================
+  return population_variance
 end
 
 # STANDARD DEVIATION
@@ -73,14 +76,14 @@ end
 #  - take the square root of the variance
 
 def standard_deviation(list_of_numbers)
-  # ====================
-  # Your code goes here.
-  # ====================
+  sqrt_power = 0.5
+  population_variance = variance(list_of_numbers)
+
+  return population_variance ** sqrt_power
 end
 
 
 # Finally, everything above allows us to do:
-
 # first_dataset = [93, 65, 87, 68, 2, 64, 36, 96, 45, 47]
 # stdev1 = standard_deviation(first_dataset)
 # puts "The standard deviation of the first dataset is #{stdev1.round(2)}."
